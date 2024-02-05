@@ -1,0 +1,214 @@
+{% extends 'basic.html' %}
+
+{% load static %}
+
+{% block css %}
+    <style>
+        /* The alert message box */
+        .alert {
+          padding: 20px;
+          background-color: #f44336;
+          color: white;
+          width: 100%;
+          margin: auto;
+          opacity: 1;
+          transition: opacity 0.6s;
+          
+        }
+
+        .alert.success {background-color: #4CAF50;}
+        .alert.info {background-color: #2196F3;}
+        .alert.warning {background-color: #ff9800;}
+
+        .closebtn {
+          margin-left: 15px;
+          color: white;
+          font-weight: bold;
+          float: right;
+          font-size: 22px;
+          line-height: 20px;
+          cursor: pointer;
+          transition: 0.3s;
+        }
+
+        .closebtn:hover {
+          color: black;
+        }
+
+        #delbtn{
+            /*top: 0;*/
+            margin-left: 90%;
+            color: white;
+            background-color: red;
+
+        }
+        element.style {
+    display: inline;
+}
+
+    </style>
+{% endblock %}
+
+{% block body %}
+	{% if yes == "yes" %}
+		<div class="alert warning">
+	        <span class="closebtn">&times;</span>  
+	      	<strong>Dreamer's Holiday :</strong> {{msg}}
+	   	</div>
+   	{% endif %}
+	
+
+	<!--banner-slider-->
+	<section class="w3l-banner-slider-main">
+		<div class="banner-content">
+			<div id="owl-demo2" class="owl-carousel owl-theme">
+				<!--/slide1-->
+				<div class="item">
+					<div class="top-bannerhny-content">
+						<div class="top-bannerhny-left">
+							<div class="banner-innf">
+								<h6 class="hny-sub">Dreamer's Holiday</h6>
+								<h3>Explore your Travel <span>Destinations</span></h3>
+								<p>Enjoy the Best Destinations with Our Travel Agency</p>
+
+
+
+
+								<div class="button-6">
+									<div class="eff-6"></div>
+									<a href="/destinations/">View Destinations</a>
+								</div>
+							</div>
+						</div>
+						<div class="top-bannerhny-right">
+
+						</div>
+					</div>
+				</div>
+				<!--//slide1-->
+				<!--/slide1-->
+				<div class="item">
+					<div class="top-bannerhny-content">
+						<div class="top-bannerhny-left">
+							<div class="banner-innf">
+								<h6 class="hny-sub">Dreamer's Holiday</h6>
+								<h3>Enjoy your Dream <span>Vacation</span></h3>
+								<p>Enjoy the Best Destinations with Our Travel Agency</p>
+								<div class="button-6">
+									<div class="eff-6"></div>
+									<a href="/destinations/">View Destinations </a>
+								</div>
+							</div>
+						</div>
+						<div class="top-bannerhny-right one">
+
+						</div>
+					</div>
+				</div>
+				<!--//slide1-->
+				<!--/slide1-->
+				<div class="item">
+					<div class="top-bannerhny-content">
+						<div class="top-bannerhny-left">
+							<div class="banner-innf">
+								<h6 class="hny-sub">Balloon Flights</h6>
+								<h3>Enjoy your Dream <span>Vacation</span></h3>
+								<p>Let's Enjoy The Wonders of Nature</p>
+								<div class="button-6">
+									<div class="eff-6"></div>
+									<a href="/destinations/">View Destinations </a>
+								</div>
+							</div>
+						</div>
+						<div class="top-bannerhny-right two">
+
+						</div>
+					</div>
+				</div>
+				<!--//slide1-->
+				<!--/slide1-->
+				<div class="item">
+					<div class="top-bannerhny-content">
+						<div class="top-bannerhny-left">
+							<div class="banner-innf">
+								<h6 class="hny-sub">Dreamer's Holiday</h6>
+
+								<h3>Explore your Travel <span>Destinations</span></h3>
+								<p>Let's Enjoy The Wonders of Nature</p>
+								<div class="button-6">
+									<div class="eff-6"></div>
+									<a href="/destinations/">View Destinations</a>
+								</div>
+							</div>
+						</div>
+						<div class="top-bannerhny-right three">
+
+						</div>
+					</div>
+				</div>
+				<!--//slide1-->
+
+			</div>
+		</div>
+	</section>
+	<!-- //banner-slider-->
+	
+	<section class="w3l-gallery-6">
+		<!--/gallery-->
+		<div class="gallery-content-6 py-5">
+			<div class="container py-lg-5">
+				<div class="title-content mb-lg-5 mb-4">
+					<span class="sub-title">Hot Tours</span>
+					<h3 class="hny-title">Newly Added Packages</h3>
+				</div>
+				<div class="row gallery-grids">
+					{% for i in package %}
+					<div class="col-lg-4 col-md-6 content-left-sec gal-slide-grid">
+						<div class="gal-slide-img">
+							<a href="/subpackage/{{i.package}}/"><img src="{{i.p_image.url}}" class="img img-fluid" style="height: 60vh;"></a>
+						</div>
+						<div class="gal-slide-info">
+
+							<a href="#">
+								<h4 class="mt-4 mb-0">{{i.package}}</h4>
+							</a>
+							<h6 class="mt-sm-2 mt-1"></h6>
+
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+		<!--//gallery-->
+
+	</section>
+	<section class="w3l-newletter">
+		<!-- /form-25-section -->
+		<div class="form-25-mian py-5">
+			<div class="container py-lg-5">
+                <div class="forms-25-info">
+				
+				</div>
+			</div>
+
+	</section>
+	<!-- //form-25-section -->
+
+{% endblock %}
+
+{% block js %}
+    <script>
+       var close = document.getElementsByClassName("closebtn");
+        var i;
+
+        for (i = 0; i < close.length; i++) {
+          close[i].onclick = function(){
+            var div = this.parentElement;
+            div.style.opacity = "0";
+            setTimeout(function(){ div.style.display = "none"; }, 600);
+          }
+        }
+    </script>
+
+{% endblock %}

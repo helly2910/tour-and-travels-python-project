@@ -1,0 +1,169 @@
+{% extends 'basic.html' %}
+
+{% load static %}
+
+{% block css %}
+    <style>
+        /* The alert message box */
+        .alert {
+          padding: 20px;
+          background-color: #f44336;
+          color: white;
+          width: 100%;
+          margin: auto;
+          opacity: 1;
+          transition: opacity 0.6s;
+          
+        }
+
+        .alert.success {background-color: #4CAF50;}
+        .alert.info {background-color: #2196F3;}
+        .alert.warning {background-color: #ff9800;}
+
+        .closebtn {
+          margin-left: 15px;
+          color: white;
+          font-weight: bold;
+          float: right;
+          font-size: 22px;
+          line-height: 20px;
+          cursor: pointer;
+          transition: 0.3s;
+        }
+
+        .closebtn:hover {
+          color: black;
+        }
+
+        #delbtn{
+            /*top: 0;*/
+            margin-left: 90%;
+            color: white;
+            background-color: red;
+
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+	{% if yes == "yes" %}
+		<div class="alert warning">
+	        <span class="closebtn">&times;</span>  
+	      	<strong>Dreamer's Holiday :</strong> {{msg}}
+	   	</div>
+   	{% endif %}
+
+	<!-- /contact-grid1 -->
+	<section class="w3l-contact-section-main">
+		<div class="contact-sec-inner">
+			<div class="contacts-5-grid">
+				<div class="contacts-sub-5">
+					<iframe
+						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387193.305935303!2d-74.25986548248684!3d40.69714941932609!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew+York%2C+NY%2C+USA!5e0!3m2!1sen!2sin!4v1563262564932!5m2!1sen!2sin"
+						style="border:0" allowfullscreen></iframe>
+				</div>
+				<div class="container">
+					<div class="map-content-5">
+						<input id="tab1" type="radio" name="tabs" checked>
+						<label class="tabtle" for="tab1">India</label>
+
+
+
+						<section id="content1" class="tab-content">
+							<div class="d-grid grid-col-4">
+								<div class="service-col-4 contact">
+									<div class="icon-contact"><span class="fa fa-home" aria-hidden="true"></span></div>
+									<h6>Address</h6>
+									<p>A-2, 2nd Floor, Gopal Tower, Siddhi Complex, Near Naranpura Brts bus stop , Ahmedabad, Gujarat 380013.</p>
+
+								</div>
+								<div class="service-col-4 contact">
+									<div class="icon-contact"><span class="fa fa-envelope-o" aria-hidden="true"></span>
+									</div>
+									<h6>Email</h6>
+									<a href="mailto:stroll1@example.com" class="link1">dreamersholiday123@gmail.com</a>
+									<a href="mailto:stroll2@example.com" class="link1">dreamersholiday380@rediffmail.com</a>
+								</div>
+								<div class="service-col-4 contact">
+									<div class="icon-contact"><span class="fa fa-phone"></span></div>
+									<h6>Phone</h6>
+									<a href="tel:+1(21) 224-016-8765" class="link1">+91 7240168765</a>
+									<a href="tel:+1(21) 224-016-8764" class="link1">+91 9240168764</a>
+
+								</div>
+
+							</div>
+
+						</section>
+
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- //contact-grid1 -->
+
+	</section>
+	<!-- /contact-form -->
+	<section class="w3l-contact-section-form">
+		<div class="contact-sec-inner py-5">
+			<div class="container py-lg-5">
+				<div class="contact-form-mainv">
+					<span class="sub-title">Contact Us</span>
+					<h3 class="hny-title">We’d Love to Hear From You, Get In Touch With Us!</h3>
+					<p class="para-contact mb-lg-5 mb-4">Welcome to leave your contact info and we will be in touch
+						shortly
+					</p>
+					<form action="/contact/" method="post">
+						{% csrf_token %}
+						<div class="row">
+							<div class="col-lg-4 form-group">
+								<label for="w3lName">Your Name</label>
+
+								<input type="text" name="Name" id="w3lName">
+							</div>
+							<div class="col-lg-4 form-group">
+								<label for="w3lSender">Your Email ID</label>
+								<input type="text" name="Email" id="w3lSender">
+							</div>
+							<div class="col-lg-4 form-group">
+								<label for="w3lSubject">Phone</label>
+								<input type="text" name="Phone" id="w3lSubject">
+							</div>
+						</div>
+
+
+						<div class="form-group">
+							<label for="w3lSubject">Message</label>
+							<textarea name="Message" placeholder="" required=""></textarea>
+						</div>
+						<div class="form-submit text-right mt-4">
+							<button type="submit" class="btn submit">Submit</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- //contact-form -->
+
+
+
+
+{% endblock %}
+
+{% block js %}
+    <script>
+       var close = document.getElementsByClassName("closebtn");
+        var i;
+
+        for (i = 0; i < close.length; i++) {
+          close[i].onclick = function(){
+            var div = this.parentElement;
+            div.style.opacity = "0";
+            setTimeout(function(){ div.style.display = "none"; }, 600);
+          }
+        }
+    </script>
+
+{% endblock %}

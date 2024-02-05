@@ -1,0 +1,58 @@
+{% extends 'basic.html' %}
+{% load static %}
+
+{% block css %}
+<style>
+	h5{
+		font-size: 15px;
+		margin: 0;
+		display: inline;
+	}
+	p{
+		display: inline;
+	}
+</style>
+{% endblock %}
+
+{% block body %}
+{% if user.is_authenticated %}
+    <section class="w3l-destinations-1">
+        <div class="destionation-innf py-5">
+            <div class="container py-lg-5">
+            	<div class="title-content mb-5">
+                    <span class="sub-title">Your</span>
+                    <h3 class="hny-title mb-0">Package</h3>
+                    <p>You are now free to move about the Places.</p>
+                </div>
+				<div class="row package-grids mt-5">
+					<div class="col-md-8 posts-w3ls mt-md-0 mt-4">
+						<h2 class="text-danger"><u>{{b.booking_package.p_title}}</u></h2><br>
+						<p>The {{b.booking_package.p_package}} Package</p><br>
+						<h5 class="mt-2">Price :</h5> <p><i class="fas fa-rupee-sign mr-2 text-danger">{{b.booking_package.p_price_per_person}} /- Per Persion</i></p><br>
+						<h5 class="mt-2">Total Person :</h5> <p>{{b.travellers}}</p><br>
+						<h5 class="mt-2">Package_Days :</h5> <p>{{b.booking_package.p_package_days}}</p><br>
+						<h5 class="mt-2">Package Date :</h5> <p>{{b.start_date}}</p><br>
+						<h5 class="mt-2">Travelling Through :</h5> <p>{{b.booking_package.p_travel_through}}</p><br>
+						<h5 class="mt-2">Boarding Point :</h5> <p>{{b.boarding}}</p><br>
+						<h5 class="mt-2">Room :</h5> <p>{{b.room_wise}}</p><br>
+						<h5 class="mt-2">Provider Name :</h5> <p>{{b.booking_package.p_provider_name}}</p><br>
+						<h5 class="mt-2">Provider Phone :</h5> <p>{{b.booking_package.p_phone}}</p><br>
+						<h5 class="mt-2">Description :</h5> <p>{{b.booking_package.p_full_package_description}}</p><br>
+						<br>
+						<a href="/mybooking/" class="btn btn-info">Back</a>
+						<a href="/cancelbooking/{{b.booking_id}}" class="btn btn-danger">Cancel booking</a>
+					</div>
+					<div class="col-md-4 posts-w3ls mt-md-0 mt-4">
+						<div class="price-top">
+							<p>{{b.booking_package.p_package}}:</p>
+							<img src="{{b.booking_package.p_package_image.url}}" class="img-fluid" style="height: 40vh;" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% else %}
+<h1 class="text-danger">You are not logged in...</h1>
+{% endif %}	
+{% endblock %}

@@ -1,0 +1,97 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block body %}
+	{% if user.is_authenticated %}	
+	<section class="w3l-destinations-1">
+        <div class="destionation-innf py-5">
+            <div class="container py-lg-5">
+                <div class="title-content mb-5">
+                    <span class="sub-title">Find Your {{ pac }}</span>
+                    <h3 class="hny-title mb-0">Packages</h3>
+                    <p>You are now free to move about the Places.</p>
+                </div>
+                <!--/destinations-grids-->
+                <ul class="gallery_agile">
+                    {% for i in subpackage %}
+                    <li>
+                        <div class="w3_agile_portfolio_grid">
+                            <a href="/checkout/{{i.p_id}}/">
+                                <img src="{{ i.p_package_image.url }}" style="height: 60vh; " class="img-fluid" />
+                                <div class="w3layouts_news_grid_pos">
+                                    <div class="wthree_text">
+                                        <h3 class="bg-danger">Check Out</h3>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="wthree_text2 bg-dark" style="opacity: 0.6;">
+                                <h4>{{i.p_title}}</h4>
+                                <h4>{{i.p_package_days}}</h4>
+                                
+                                <p class="text-light"><i class="fas fa-rupee-sign mr-2">{{i.p_price_per_person}} /- per person</i></p>
+                            </div>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+                <!--//destinations-grids-->
+            </div>
+        </div>
+    </section>
+
+
+
+
+	{% else %}
+	<div class="modal fade" id="notlogin">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+            	<div class="modal-header">
+                	<h4 class="modal-title">Please Login first :(</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                	<h2 class="text-danger">You are not Logged In..</h2> 
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <section class="w3l-destinations-1">
+        <div class="destionation-innf py-5">
+            <div class="container py-lg-5">
+                <div class="title-content mb-5">
+                    <span class="sub-title">Find Your {{pac}}</span>
+                    <h3 class="hny-title mb-0">Destinations</h3>
+                    <p>You are now free to move about the Places.</p>
+                </div>
+                <!--/destinations-grids-->
+                <ul class="gallery_agile">
+                    {% for i in subpackage %}
+                    <li>
+                        <div class="w3_agile_portfolio_grid">
+                            <a data-toggle="modal" data-target="#notlogin" type="submit"  class="btn btn-danger">
+                                <img src="{{ i.p_package_image.url }}" style="height: 60vh;" class="img-fluid" />
+                                <div class="w3layouts_news_grid_pos">
+                                    <div class="wthree_text">
+                                        <h3 class="bg-danger">Check Out <i class="fa fa-lock" aria-hidden="true"></i></h3>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="wthree_text2">
+                                <h4 class="text-dark">{{i.p_title}}</h4>
+                                <h4 class="bg-danger">{{i.p_package_days}}</h4>
+                                
+                                <p class="text-light bg-danger"><i class="fas fa-rupee-sign mr-2">{{i.p_price_per_person}} /- per person</i></p>
+                            </div>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+                <!--//destinations-grids-->
+            </div>
+        </div>
+    </section>
+	{% endif %}
+{% endblock %}

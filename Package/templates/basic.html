@@ -1,0 +1,474 @@
+
+<!doctype html>
+<html lang="zxx">
+{% load static %}
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Dreamer's Holiday</title>
+	<link rel="shortcut icon" href="{% static 'img/Icon.ico' %}" />
+	<!-- Template CSS -->
+	<link rel="stylesheet" href="{% static 'css/style-starter.css' %}">
+	<!-- Template CSS -->
+	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700,800&display=swap" rel="stylesheet">
+
+	<link href="//fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+
+	<!-- Template CSS -->
+	<style type="text/css">
+		.w3l-newletter {
+		  /*--/form-25--*/
+
+		}
+
+		.w3l-newletter .form-25-mian {
+		  background: url({% static 'img/12.jpg' %}) no-repeat top;
+		  background-size: cover;
+		  -webkit-background-size: cover;
+		  -moz-background-size: cover;
+		  -o-background-size: cover;
+		  -ms-background-size: cover;
+		  background-attachment: fixed;
+		  position: relative;
+		  z-index: 1;
+
+		}
+
+		.w3l-newletter .form-25-main:before {
+		  content: "";
+		  background: rgba(8, 67, 76, 0.74);
+		  position: absolute;
+		  top: 0;
+		  min-height: 100%;
+		  left: 0;
+		  right: 0;
+		  z-index: -1;
+
+		}
+
+		.w3l-newletter .forms-25-info {
+		  max-width: 600px;
+		  text-align: left;
+		  margin-left: auto;
+		}
+
+		.w3l-newletter h3.hny-title.two {
+		  margin-bottom: 10px;
+		}
+
+		.w3l-newletter p {
+		  font-style: normal;
+		  font-size: 15px;
+		  line-height: 26px;
+		  color: #fff;
+
+		}
+
+		.w3l-newletter .forms-gds {
+		  display: flex;
+		}
+
+		.w3l-newletter .forms-25-info input {
+		  background: #fff;
+		  width: 70%;
+		  font-size: 16px;
+		  padding: 0px 15px;
+		  color: #fff;
+		  height: 50px;
+		  text-align: left;
+		  -webkit-appearance: none;
+		  outline: none;
+		  float: left;
+		  border: none;
+		  border-radius: 0;
+		  -webkit-border-top-left-radius: 6px;
+		  -webkit-border-bottom-left-radius: 6px;
+		  -moz-border-radius-topleft: 6px;
+		  -moz-border-radius-bottomleft: 6px;
+		  border-top-left-radius: 6px;
+		  border-bottom-left-radius: 6px;
+
+
+		}
+
+		.w3l-newletter button.btn {
+		  width: 30%;
+		  cursor: pointer;
+		  line-height: 30px;
+		  text-decoration: none;
+		  -webkit-appearance: none;
+		  display: inline-block;
+		  font-style: normal;
+		  font-weight: 600;
+		  font-size: 16px;
+		  border: none;
+		  outline: none;
+		  color: #fff;
+		  background: #DB162F;
+		  height: 50px;
+		  float: right;
+		  border-radius: 0;
+		  -webkit-border-top-right-radius: 6px;
+		  -webkit-border-bottom-right-radius: 6px;
+		  -moz-border-radius-topright: 6px;
+		  -moz-border-radius-bottomright: 6px;
+		  border-top-right-radius: 6px;
+		  border-bottom-right-radius: 6px;
+		}
+
+		.w3l-newletter button.btn:hover {
+		  background: #006989;
+		  color: #fff;
+		  transition: 0.3s ease;
+		}
+
+		.w3l-newletter p.action-link {
+		  padding: 0;
+		  opacity: 0.8;
+		  margin-top: 15px;
+		}
+
+		.w3l-newletter .subscription-img img {
+		  display: block;
+		}
+
+		@media all and (max-width: 992px) {
+		  .w3l-newletter .forms-25-info {
+		    max-width: 600px;
+		    text-align: left;
+		  }
+		}
+
+		@media all and (max-width: 690px) {
+		  .w3l-newletter .forms-25-info {
+		    max-width: 600px;
+		    text-align: left;
+		  }
+		}
+
+		@media all and (max-width: 650px) {
+		  .w3l-newletter .forms-25-info {
+		    max-width: 550px;
+		    text-align: left;
+		  }
+
+		  .w3l-newletter .forms-gds {
+		    display: block;
+		  }
+
+		  .w3l-newletter .forms-25-info input,
+		  .w3l-newletter button.btn {
+		    float: none;
+		    width: 100%;
+		    border-radius: 6px;
+		  }
+		}
+
+		@media all and (max-width: 440px) {
+		  .w3l-newletter .forms-25-info {
+		    max-width: 400px;
+		    text-align: left;
+		  }
+		}
+	</style>
+	{% block css %}{% endblock %}
+</head>
+
+<body>
+	<!-- Headers-4 block -->
+	<section class="w3l-header-4 mobile-header">
+		<div class="header-tophny">
+			<div class="container-fluid">
+				<header class="top-headerhny">
+					<!--/nav-->
+					<nav class="navbar navbar-expand-lg navbar-light">
+						{% if user.is_authenticated %}
+						<a class="navbar-brand" href="/home/">
+							Dreamer's Holiday</a>
+						{% else %}
+						<a class="navbar-brand" href="/">
+							Dreamer's Holiday</a>
+
+
+						{% endif %}
+
+
+						<button class="navbar-toggler" type="button" data-toggle="collapse"
+							data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+							aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav ml-auto">
+								{% if user.is_authenticated %}
+								<li class="nav-item active">
+									<a class="nav-link" href="/home/">Home</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="/mybooking/">MyBookings</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="/about/">About</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="/service/">Why Us?</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="/testimonial/">Testimonials</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="/contact/">Contact Us</a>
+								</li>
+								<li class="nav-item text-light">
+									<a class="nav-link">{{request.user.first_name}}</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link btn btn-danger" href="/logout/">LOGOUT</a>
+								</li>
+								{% else %}
+								<li class="nav-item active">
+									<a class="nav-link" href="/">Home</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="/about/">About</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="/destinations/">Destinations</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="/service/">Why Us?</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="/testimonial/">Testimonials</a>
+								</li>
+
+
+								<li class="nav-item">
+									<a class="nav-link" href="/contact/">Contact Us</a>
+								</li>
+								
+								<li class="nav-item">
+										<a class="nav-link btn btn-danger" href="/login/">LOGIN / SIGNUP</a>
+								</li>
+								{% endif %}
+							</ul>
+
+						</div>
+
+
+					</nav>
+					<!--//nav-->
+				</header>
+			</div>
+		</div>
+	</section>
+
+	{% block body %}
+	{% endblock %}
+
+
+	<footer class="w3l-footer-66">
+		<section class="footer-inner-main">
+			<div class="footer-hny-grids py-5">
+				<div class="container py-lg-4">
+					<div class="text-txt">
+						<div class="right-side">
+							<div class="row sub-columns">
+								<div class="col-lg-4 col-md-6 sub-one-left pr-lg-4">
+									<h2><a class="navbar-brand" href="index.html">
+											Dreamer's Holiday</a></h2>
+									<p>This website is specially designed for tourists and campaigning lovers. Here you can choose a destination, find best package suitable to you and book it. </p>
+									
+								</div>
+								<div class="col-lg-4 col-md-6 sub-one-left mid-footer-gd">
+									<div class="sub-two-right">
+										<h6>Quick links</h6>
+										<ul>
+											<li><a href="index.html"><span
+														class="fa fa-angle-double-right mr-2"></span>Home</a>
+											</li>
+											<li><a href="about.html"><span
+														class="fa fa-angle-double-right mr-2"></span>About</a>
+											</li>
+											<li><a href="destinations.html"><span
+														class="fa fa-angle-double-right mr-2"></span>Destinations</a>
+											</li>
+											
+										</ul>
+									</div>
+									<div class="sub-two-right">
+										<h6>Quick links</h6>
+										<ul>
+											<li><a href="services.html"><span
+														class="fa fa-angle-double-right mr-2"></span>Why Us?</a></li>
+											<li><a href="testimonials.html"><span
+														class="fa fa-angle-double-right mr-2"></span>Testimonials</a>
+											</li>
+											<li><a href="contact.html"><span
+														class="fa fa-angle-double-right mr-2"></span>Contact Us</a></li>
+											
+										</ul>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-6 sub-one-left">
+									<h6>Picture Gallery </h6>
+									<div class="column2 instagram-feeds">
+										<div class="b-img"> <a href="#"><img src="{% static 'images/g1.jpg' %}"
+													class="img-fluid" alt=""></a></div>
+										<div class="b-img"> <a href="#"><img src="{% static 'images/g2.jpg' %}"
+													class="img-fluid" alt=""></a></div>
+										<div class="b-img"> <a href="#"><img src="{% static 'images/g3.jpg' %}"
+													class="img-fluid" alt=""></a></div>
+										
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="below-section">
+				<div class="container">
+					<div class="copyright-footer">
+						<div class="columns text-lg-left">
+							<p>Project developed by : Jhalak Gupta , Helly Patel , Rinal Dutt , Neha Darji
+
+							</p>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			<!-- copyright -->
+			<!-- move top -->
+			<button onclick="topFunction()" id="movetop" title="Go to top">
+				<span class="fa fa-arrow-up" aria-hidden="true"></span>
+			</button>
+			<script>
+				// When the user scrolls down 20px from the top of the document, show the button
+				window.onscroll = function () {
+					scrollFunction()
+				};
+
+				function scrollFunction() {
+					if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+						document.getElementById("movetop").style.display = "block";
+					} else {
+						document.getElementById("movetop").style.display = "none";
+					}
+				}
+
+				// When the user clicks on the button, scroll to the top of the document
+				function topFunction() {
+					document.body.scrollTop = 0;
+					document.documentElement.scrollTop = 0;
+				}
+			</script>
+			<!-- /move top -->
+
+		</section>
+	</footer>
+	<!--//footer-66 -->
+	{% block js %}{% endblock %}
+</body>
+
+</html>
+
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<!-- disable body scroll which navbar is in active -->
+
+<!--//-->
+<script>
+	$(function () {
+		$('.navbar-toggler').click(function () {
+			$('body').toggleClass('noscroll');
+		})
+	});
+</script>
+<!--/scroll-down-JS-->
+<!--pop-up-box-->
+
+<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+<script>
+	$(document).ready(function () {
+		$('.popup-with-zoom-anim').magnificPopup({
+			type: 'inline',
+
+			fixedContentPos: false,
+			fixedBgPos: true,
+
+			overflowY: 'auto',
+
+			closeBtnInside: true,
+			preloader: false,
+
+			midClick: true,
+			removalDelay: 300,
+			mainClass: 'my-mfp-zoom-in'
+		});
+
+		$('.popup-with-move-anim').magnificPopup({
+			type: 'inline',
+
+			fixedContentPos: false,
+			fixedBgPos: true,
+
+			overflowY: 'auto',
+
+			closeBtnInside: true,
+			preloader: false,
+
+			midClick: true,
+			removalDelay: 300,
+			mainClass: 'my-mfp-slide-bottom'
+		});
+	});
+</script>
+
+<!--//pop-up-box-->
+<!-- for blog carousel slider -->
+<script src="{% static 'js/owl.carousel1.js' %}"></script>
+<script>
+	$(document).ready(function () {
+		$("#owl-demo2").owlCarousel({
+			items: 1,
+			lazyLoad: true,
+			autoPlay: true,
+			navigation: false,
+			navigationText: ["", ""],
+			rewindNav: false,
+			scrollPerPage: true,
+			pagination: false,
+			paginationNumbers: false,
+
+		})
+	});
+	$(document).ready(function () {
+		$("#owl-demo1").owlCarousel({
+			loop: true,
+			margin: 20,
+			responsiveClass: true,
+			responsive: {
+				0: {
+					items: 1,
+					nav: true
+				},
+				600: {
+					items: 2,
+					nav: false
+				},
+				1000: {
+					items: 3,
+					nav: true,
+					loop: false
+				}
+			}
+		})
+	})
+</script>
+
+<script src="{% static 'js/bootstrap.min.js' %}"></script>

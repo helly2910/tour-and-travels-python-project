@@ -1,0 +1,133 @@
+{% extends 'basic.html' %}
+{% load static %}
+
+{% block css %}
+    <style>
+        /* The alert message box */
+        .alert {
+          padding: 20px;
+          background-color: #f44336;
+          color: white;
+          width: 100%;
+          margin: auto;
+          opacity: 1;
+          transition: opacity 0.6s;
+          
+        }
+
+        .alert.success {background-color: #4CAF50;}
+        .alert.info {background-color: #2196F3;}
+        .alert.warning {background-color: #ff9800;}
+
+        .closebtn {
+          margin-left: 15px;
+          color: white;
+          font-weight: bold;
+          float: right;
+          font-size: 22px;
+          line-height: 20px;
+          cursor: pointer;
+          transition: 0.3s;
+        }
+
+        .closebtn:hover {
+          color: black;
+        }
+
+        #delbtn{
+            /*top: 0;*/
+            margin-left: 90%;
+            color: white;
+            background-color: red;
+
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+{% if user.is_authenticated %}
+	<div class="modal fade" id="notlogin">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+            	<div class="modal-header">
+                	<h4 class="modal-title">Share Your Experience {{request.user.first_name}} :)</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                	<form action="/feedBack/" method="POST" enctype="multipart/form-data">
+                    	{% csrf_token %}
+                        <div class="form-group">
+                        	<label>Message :</label>
+                        	<input type="text" class="form-control" name="umsg" placeholder="Your Message" required> 
+                        </div>
+                        <button type="submit" class="btn btn-info">Send feedBack</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+	{% if yes == "yes" %}
+		<div class="alert warning">
+	        <span class="closebtn">&times;</span>  
+	      	<strong>Tourist Portal :</strong> {{msg}}
+	   	</div>
+   	{% endif %}
+
+	<section class="w3l-destinations-1">
+        <div class="destionation-innf py-5">
+            <div class="container py-lg-5">
+            	<div class="title-content mb-5">
+                    <span class="sub-title">Your Booking</span>
+                    <h3 class="hny-title mb-0">Packages</h3>
+                    <p>You are now free to move about the Places.</p>
+                    {% if book > 0 %}
+                    <button data-toggle="modal" data-target="#notlogin" type="submit" class="btn btn-info float-right">feedBack</button>
+                    {% endif %}
+                </div>
+				<div class="row package-grids mt-5">
+				{% for i in booking %}
+					<div class="col-md-4 posts-w3ls my-4">
+							<div class="w3_agile_portfolio_grid">
+								<a href="/mypackage/{{i.booking_id}}/" class="">    
+									<img src="{{ i.booking_package.p_package_image.url }}" style="height: 60vh; " class="img-fluid" />
+									<div class="w3layouts_news_grid_pos">
+	                                    <div class="wthree_text">
+	                                        <h3 class="bg-danger">Know More</h3>
+	                                    </div>
+	                                </div>
+								</a>
+	                            <div class="wthree_text2 bg-dark" style="opacity: 0.6;">
+	                                <h5 class="text-light">{{i.booking_package.p_title}}</h5>
+	                                <h5 class="text-light">{{i.booking_package.p_package_days}}</h5>
+	                                <p class="text-light"><i class="fas fa-rupee-sign mr-2">{{i.booking_package.p_price_per_person}} /- per person,</i>Total Person : {{ i.travellers }}</p>
+	                                <p class="text-light">Date of Package : {{ i.start_date }}</p>
+	                            </div>
+	                        </div>
+						</div>
+					</div>
+				{% endfor %}
+				</div>
+			</div>
+		</div>
+	</section>
+{% else %}
+<h1 class="text-danger">You are not logged in...</h1>
+{% endif %}
+{% endblock %}
+{% block js %}
+    <script>
+       var close = document.getElementsByClassName("closebtn");
+        var i;
+
+        for (i = 0; i < close.length; i++) {
+          close[i].onclick = function(){
+            var div = this.parentElement;
+            div.style.opacity = "0";
+            setTimeout(function(){ div.style.display = "none"; }, 600);
+          }
+        }
+    </script>
+
+{% endblock %}

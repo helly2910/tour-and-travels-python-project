@@ -1,0 +1,105 @@
+{% extends 'basic.html' %}
+{% load static %}
+
+{% block css %}
+    <style>
+        /* The alert message box */
+        .alert {
+          padding: 20px;
+          background-color: #f44336;
+          color: white;
+          width: 100%;
+          margin: auto;
+          opacity: 1;
+          transition: opacity 0.6s;
+          
+        }
+
+        .alert.success {background-color: #4CAF50;}
+        .alert.info {background-color: #2196F3;}
+        .alert.warning {background-color: #ff9800;}
+
+        .closebtn {
+          margin-left: 15px;
+          color: white;
+          font-weight: bold;
+          float: right;
+          font-size: 22px;
+          line-height: 20px;
+          cursor: pointer;
+          transition: 0.3s;
+        }
+
+        .closebtn:hover {
+          color: black;
+        }
+
+        #delbtn{
+            /*top: 0;*/
+            margin-left: 90%;
+            color: white;
+            background-color: red;
+
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+	{% if yes == "yes" %}
+		<div class="alert warning">
+	        <span class="closebtn">&times;</span>  
+	      	<strong>{{ss.a_name}} :</strong> {{msg}}
+	   	</div>
+   	{% endif %}
+	 <!--destinations -->
+    <section class="w3l-destinations-1">
+        <div class="destionation-innf py-5">
+            <div class="container py-lg-5">
+                <div class="title-content mb-5">
+                    <span class="sub-title">Find Your</span>
+                    <h3 class="hny-title mb-0">Destinations</h3>
+                    <p>You are now free to Explore the Unlimited Beauty about the places</p>
+                </div>
+                <!--/destinations-grids-->
+                <ul class="gallery_agile">
+                    {% for i in package %}
+                    <li>
+                        <div class="w3_agile_portfolio_grid">
+                            <a href="/subpackage/{{i.package}}/">
+                                <img src="{{ i.p_image.url }}" style="height: 60vh;" class="img-fluid" />
+                                <div class="w3layouts_news_grid_pos">
+                                    <div class="wthree_text">
+                                        <h3>{{i.package}}</h3>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="wthree_text2">
+                                <h4>{{i.package}}</h4>
+                            </div>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+                <!--//destinations-grids-->
+            </div>
+        </div>
+    </section>
+    <!--//destinations -->
+
+{% endblock %}
+
+{% block js %}
+    <script>
+       var close = document.getElementsByClassName("closebtn");
+        var i;
+
+        for (i = 0; i < close.length; i++) {
+          close[i].onclick = function(){
+            var div = this.parentElement;
+            div.style.opacity = "0";
+            setTimeout(function(){ div.style.display = "none"; }, 600);
+          }
+        }
+    </script>
+
+{% endblock %}

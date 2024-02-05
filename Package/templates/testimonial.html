@@ -1,0 +1,81 @@
+{% extends 'basic.html' %}
+
+{% load static %}
+
+{% block body %}
+	<section class="w3l-companies-hny-6 mb-5">
+		<!-- /grids -->
+		<div class="cusrtomer-layout py-5">
+			<div class="container pt-lg-5">
+				<div class="title-content mb-lg-5 mb-4">
+					<span class="sub-title">Testimonials</span>
+					<h3 class="hny-title">Feedback from our Customers</h3>
+				</div>
+				<!-- /grids -->
+				<div id="owl-demo1" class="owl-carousel owl-theme">
+					{% for i in feedBack %}
+					<div class="item">
+						<div class="testimonial-content">
+							<div class="testimonial">
+								<blockquote>
+									<div class="icon-quote"><span class="fa fa-quote-left" aria-hidden="true"></span>
+									</div>
+									<p><br>" Everything was perfect, and I would have to say it was the vacation of a life time (...) I will do all I can to promote your company and your services. (...) Thank you so very much for having arranged the magnificent trip we took!! "</p>
+								</blockquote>
+
+								<div class="testi-des">
+									<div class="peopl">
+										<h3></h3>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="item">
+						<div class="testimonial-content">
+							<div class="testimonial">
+								<blockquote>
+									<div class="icon-quote"><span class="fa fa-quote-left" aria-hidden="true"></span>
+									</div>
+									<p><br>" It was a wonderful experience for us. All your arrangements were up to the mark.
+All hotels and transportation arrangements were excellent. Thanks for your support and prompt response.."<br><br>
+
+
+									</p>
+								</blockquote>
+
+								<div class="testi-des">
+									<div class="peopl">
+										<h3></h3>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="item">
+						<div class="testimonial-content">
+							<div class="testimonial">
+								<blockquote>
+									<div class="icon-quote"><span class="fa fa-quote-left" aria-hidden="true"></span>
+									</div>
+									<p><br>" Thank you so much for your help in organising our India trip. We had an absolutely fantastic time, helped by your companies amazing organisation and all your great staff.
+We saw tigers, Hindu festivals, Darjeeling tea plantations and all the sites of Delhi. "</p>
+								</blockquote>
+
+								<div class="testi-des">
+									<div class="peopl">
+										<h3></h3>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+
+			</div>
+		</div>
+	</section>
+{% endblock %}
